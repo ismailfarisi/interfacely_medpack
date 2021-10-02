@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-final theme = ThemeData(
+ThemeData myTheme(BuildContext context) => ThemeData(
     primaryColor: Color(0xFFA984FF),
     backgroundColor: Colors.white,
     scaffoldBackgroundColor: Colors.white,
+    textTheme: GoogleFonts.ibmPlexSansTextTheme(Theme.of(context).textTheme)
+        .copyWith(headline4: TextStyle(color: Colors.white)),
     appBarTheme: AppBarTheme(color: Colors.white),
     elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(

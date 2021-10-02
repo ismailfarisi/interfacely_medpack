@@ -9,54 +9,75 @@ class MyDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final width = (MediaQuery.of(context).size.width * .7) / 2;
     return Scaffold(
-      backgroundColor: Colors.transparent,
       appBar: AppBar(
         leadingWidth: 80,
         elevation: 0,
-        backgroundColor: theme.primaryColor,
+        backgroundColor: Theme.of(context).primaryColor,
         leading: TextButton(
           onPressed: () {
             Navigator.pop(context);
           },
           child: Text(
             "menu",
-            style: TextStyle(color: theme.backgroundColor, fontSize: 20),
+            style: TextStyle(
+                color: Theme.of(context).backgroundColor, fontSize: 20),
           ),
         ),
       ),
       body: Container(
-        color: theme.primaryColor,
+        padding: EdgeInsets.all(40),
+        color: Theme.of(context).primaryColor,
         alignment: Alignment.center,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                TextButton(
-                    onPressed: () {},
+                Container(
+                    width: width,
+                    alignment: Alignment.centerLeft,
                     child: Text(
-                      "data",
-                      style: theme.textTheme.headline2,
+                      "Home",
+                      style: Theme.of(context).textTheme.headline4,
                     )),
-                TextButton(
-                    onPressed: () {},
-                    child: Text("data", style: theme.textTheme.headline2)),
+                Container(
+                    width: width,
+                    alignment: Alignment.centerLeft,
+                    child: Text("About",
+                        style: Theme.of(context).textTheme.headline4)),
               ],
+            ),
+            SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                    alignment: Alignment.centerLeft,
+                    width: width,
+                    child: Text("Blog",
+                        style: Theme.of(context).textTheme.headline4)),
+                Container(
+                    alignment: Alignment.centerLeft,
+                    width: width,
+                    child: Text("Contact",
+                        style: Theme.of(context).textTheme.headline4)),
+              ],
+            ),
+            SizedBox(
+              height: 50,
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                TextButton(
-                    onPressed: () {},
-                    child: Text("data", style: theme.textTheme.headline2)),
-                TextButton(
-                    onPressed: () {},
-                    child: Text("data", style: theme.textTheme.headline2)),
+                AnimatedDefaultTextStyle(
+                    child: Text("instagram"),
+                    style: Theme.of(context).textTheme.headline6,
+                    duration: Duration(microseconds: 1000))
               ],
-            ),
+            )
           ],
         ),
       ),

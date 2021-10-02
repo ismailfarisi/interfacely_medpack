@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:medpack/theme.dart';
+
+import 'package:medpack/transition_animation.dart';
 
 import 'drawer.dart';
+import 'theme.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: theme,
+      theme: myTheme(context),
       home: Home(),
     );
   }
@@ -29,31 +31,19 @@ class Home extends StatelessWidget {
       appBar: AppBar(
         leadingWidth: 80,
         elevation: 0,
-        backgroundColor: theme.backgroundColor,
         leading: TextButton(
-          onPressed: () {
-            Navigator.push(
-                context,
-                PageRouteBuilder(
-                    pageBuilder: (context, _, __) => MyDrawer(),
-                    transitionsBuilder: (context, anim, _, child) =>
-                        TweenAnimationBuilder(
-                          child: child,
-                          tween: Tween(begin: 0.0, end: 1.0),
-                          duration: Duration(milliseconds: 1000),
-                          builder: (context, value, child) {
-                            return child;
-                          },
-                        )));
-          },
-          child: Text(
-            "menu",
-            style: TextStyle(color: theme.primaryColor, fontSize: 20),
-          ),
-        ),
+            onPressed: () {
+              Navigator.push(context, PageTransitionAnimation(MyDrawer()));
+            },
+            child: Image.asset("assets/menu.png")),
         actions: [
-          Center(child: Text("Med")),
-          Center(child: Text("Pack")),
+          Center(
+            child: Image.asset(
+              "assets/logo.png",
+              fit: BoxFit.contain,
+              width: 100,
+            ),
+          ),
           SizedBox(
             width: 10,
           )
@@ -68,8 +58,8 @@ class Home extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
                 child: ElevatedButton(
                   style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all(theme.primaryColor)),
+                      backgroundColor: MaterialStateProperty.all(
+                          Theme.of(context).primaryColor)),
                   onPressed: () {},
                   child: Text("Sign Up"),
                 ),
