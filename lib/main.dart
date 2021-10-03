@@ -22,20 +22,40 @@ class MyApp extends StatelessWidget {
 
 class Home extends StatelessWidget {
   const Home({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leadingWidth: 80,
+        leadingWidth: 90,
         elevation: 0,
-        leading: TextButton(
-            onPressed: () {
-              Navigator.push(context, PageTransitionAnimation(MyDrawer()));
-            },
-            child: Image.asset("assets/menu.png")),
+        leading: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            SizedBox(
+              width: 10,
+            ),
+            Icon(
+              Icons.circle,
+              size: 10,
+              color: Theme.of(context).primaryColor,
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.push(context, PageTransitionAnimation(MyDrawer()));
+              },
+              child: Text(
+                "menu",
+                strutStyle: StrutStyle(height: .01),
+                style: TextStyle(
+                    color: Theme.of(context).primaryColor, fontSize: 20),
+              ),
+            ),
+          ],
+        ),
         actions: [
           Center(
             child: Image.asset(

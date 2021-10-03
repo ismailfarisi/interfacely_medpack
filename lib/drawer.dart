@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-
-import 'theme.dart';
+import 'package:medpack/textwriteanimation.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -12,18 +11,35 @@ class MyDrawer extends StatelessWidget {
     final width = (MediaQuery.of(context).size.width * .7) / 2;
     return Scaffold(
       appBar: AppBar(
-        leadingWidth: 80,
+        leadingWidth: 90,
         elevation: 0,
         backgroundColor: Theme.of(context).primaryColor,
-        leading: TextButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: Text(
-            "menu",
-            style: TextStyle(
-                color: Theme.of(context).backgroundColor, fontSize: 20),
-          ),
+        leading: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            SizedBox(
+              width: 10,
+            ),
+            Icon(
+              Icons.circle,
+              size: 10,
+              color: Colors.white,
+            ),
+            HorizontalSizeAnim(
+              child: TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text(
+                  "menu",
+                  strutStyle: StrutStyle(height: .1),
+                  style: TextStyle(
+                      color: Theme.of(context).backgroundColor, fontSize: 20),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
       body: Container(
@@ -40,15 +56,19 @@ class MyDrawer extends StatelessWidget {
                 Container(
                     width: width,
                     alignment: Alignment.centerLeft,
-                    child: Text(
-                      "Home",
-                      style: Theme.of(context).textTheme.headline4,
+                    child: HorizontalSizeAnim(
+                      child: Text(
+                        "Home",
+                        style: Theme.of(context).textTheme.headline4,
+                      ),
                     )),
                 Container(
                     width: width,
                     alignment: Alignment.centerLeft,
-                    child: Text("About",
-                        style: Theme.of(context).textTheme.headline4)),
+                    child: HorizontalSizeAnim(
+                      child: Text("About",
+                          style: Theme.of(context).textTheme.headline4),
+                    )),
               ],
             ),
             SizedBox(height: 20),
@@ -58,24 +78,37 @@ class MyDrawer extends StatelessWidget {
                 Container(
                     alignment: Alignment.centerLeft,
                     width: width,
-                    child: Text("Blog",
-                        style: Theme.of(context).textTheme.headline4)),
+                    child: HorizontalSizeAnim(
+                      child: Text("Blog",
+                          style: Theme.of(context).textTheme.headline4),
+                    )),
                 Container(
                     alignment: Alignment.centerLeft,
                     width: width,
-                    child: Text("Contact",
-                        style: Theme.of(context).textTheme.headline4)),
+                    child: HorizontalSizeAnim(
+                      child: Text("Contact",
+                          style: Theme.of(context).textTheme.headline4),
+                    )),
               ],
             ),
             SizedBox(
               height: 50,
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                AnimatedDefaultTextStyle(
-                    child: Text("instagram"),
-                    style: Theme.of(context).textTheme.headline6,
-                    duration: Duration(microseconds: 1000))
+                HorizontalSizeAnim(
+                  child: Text(
+                    "Instagram",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                HorizontalSizeAnim(
+                    child: Text('Facebook',
+                        style: TextStyle(color: Colors.white))),
+                HorizontalSizeAnim(
+                    child:
+                        Text('Linkedin', style: TextStyle(color: Colors.white)))
               ],
             )
           ],
