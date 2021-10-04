@@ -36,7 +36,7 @@ class MyDrawer extends StatelessWidget {
                   Navigator.pop(context);
                 },
                 child: Text(
-                  "menu",
+                  "Close",
                   strutStyle: StrutStyle(height: .1),
                   style: TextStyle(
                       color: Theme.of(context).backgroundColor, fontSize: 20),
@@ -51,9 +51,11 @@ class MyDrawer extends StatelessWidget {
         color: Theme.of(context).primaryColor,
         alignment: Alignment.center,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            SizedBox(
+              height: 120,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

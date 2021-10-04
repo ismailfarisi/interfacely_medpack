@@ -101,11 +101,11 @@ class Home extends StatelessWidget {
             ),
             Image.asset(
               "assets/art1.png",
-              width: width * .95,
+              width: width * .92,
               fit: BoxFit.fitWidth,
             ),
             SizedBox(
-              height: 30,
+              height: 50,
             ),
             Text(
               "we are trusted by:",
