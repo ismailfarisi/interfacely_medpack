@@ -1,6 +1,5 @@
+import 'package:circular_reveal_animation/circular_reveal_animation.dart';
 import 'package:flutter/material.dart';
-
-import 'package:medpack/transition_animation.dart';
 
 import 'drawer.dart';
 import 'theme.dart';
@@ -14,6 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: myTheme(context),
       home: Home(),
     );
@@ -27,6 +27,7 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width * .8;
     return Scaffold(
       appBar: AppBar(
         leadingWidth: 90,
@@ -45,7 +46,18 @@ class Home extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {
-                Navigator.push(context, PageTransitionAnimation(MyDrawer()));
+                Navigator.push(
+                    context,
+                    PageRouteBuilder(
+                        transitionDuration: Duration(milliseconds: 1000),
+                        pageBuilder: (context, anim, _) => MyDrawer(anim: anim),
+                        transitionsBuilder: (context, anim1, anim2, child) {
+                          return CircularRevealAnimation(
+                            child: child,
+                            animation: anim1,
+                            centerAlignment: Alignment(-.9, -.85),
+                          );
+                        }));
               },
               child: Text(
                 "menu",
@@ -73,6 +85,42 @@ class Home extends StatelessWidget {
         padding: EdgeInsets.all(10),
         child: Column(
           children: [
+            Text(
+              "We mail your",
+              style: Theme.of(context).textTheme.headline3,
+            ),
+            Text(
+              "prescription.",
+              style: Theme.of(context).textTheme.headline3,
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Image.asset("assets/art1.png"),
+            SizedBox(
+              height: 50,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Image.asset(
+                  "assets/cvs.png",
+                  width: width / 3,
+                  fit: BoxFit.fitWidth,
+                ),
+                Image.asset(
+                  "assets/walgreens.png",
+                  width: width / 3,
+                  height: 60,
+                  fit: BoxFit.fitHeight,
+                ),
+                Image.asset(
+                  "assets/walmart.png",
+                  width: width / 3,
+                  fit: BoxFit.fitWidth,
+                )
+              ],
+            ),
             Expanded(
               child: Align(
                 alignment: Alignment.bottomCenter,

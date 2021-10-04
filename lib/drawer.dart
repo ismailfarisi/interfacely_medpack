@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:medpack/textwriteanimation.dart';
 
 class MyDrawer extends StatelessWidget {
+  final Animation<double> anim;
   const MyDrawer({
     Key? key,
+    required this.anim,
   }) : super(key: key);
 
   @override
@@ -26,7 +27,10 @@ class MyDrawer extends StatelessWidget {
               size: 10,
               color: Colors.white,
             ),
-            HorizontalSizeAnim(
+            SizeTransition(
+              sizeFactor: anim,
+              axis: Axis.horizontal,
+              axisAlignment: -1.0,
               child: TextButton(
                 onPressed: () {
                   Navigator.pop(context);
@@ -56,7 +60,10 @@ class MyDrawer extends StatelessWidget {
                 Container(
                     width: width,
                     alignment: Alignment.centerLeft,
-                    child: HorizontalSizeAnim(
+                    child: SizeTransition(
+                      sizeFactor: anim,
+                      axis: Axis.horizontal,
+                      axisAlignment: -1.0,
                       child: Text(
                         "Home",
                         style: Theme.of(context).textTheme.headline4,
@@ -65,7 +72,10 @@ class MyDrawer extends StatelessWidget {
                 Container(
                     width: width,
                     alignment: Alignment.centerLeft,
-                    child: HorizontalSizeAnim(
+                    child: SizeTransition(
+                      sizeFactor: anim,
+                      axis: Axis.horizontal,
+                      axisAlignment: -1.0,
                       child: Text("About",
                           style: Theme.of(context).textTheme.headline4),
                     )),
@@ -78,14 +88,20 @@ class MyDrawer extends StatelessWidget {
                 Container(
                     alignment: Alignment.centerLeft,
                     width: width,
-                    child: HorizontalSizeAnim(
+                    child: SizeTransition(
+                      sizeFactor: anim,
+                      axis: Axis.horizontal,
+                      axisAlignment: -1.0,
                       child: Text("Blog",
                           style: Theme.of(context).textTheme.headline4),
                     )),
                 Container(
                     alignment: Alignment.centerLeft,
                     width: width,
-                    child: HorizontalSizeAnim(
+                    child: SizeTransition(
+                      sizeFactor: anim,
+                      axis: Axis.horizontal,
+                      axisAlignment: -1.0,
                       child: Text("Contact",
                           style: Theme.of(context).textTheme.headline4),
                     )),
@@ -97,16 +113,25 @@ class MyDrawer extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                HorizontalSizeAnim(
+                SizeTransition(
+                  sizeFactor: anim,
+                  axis: Axis.horizontal,
+                  axisAlignment: -1.0,
                   child: Text(
                     "Instagram",
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
-                HorizontalSizeAnim(
+                SizeTransition(
+                    sizeFactor: anim,
+                    axis: Axis.horizontal,
+                    axisAlignment: -1.0,
                     child: Text('Facebook',
                         style: TextStyle(color: Colors.white))),
-                HorizontalSizeAnim(
+                SizeTransition(
+                    sizeFactor: anim,
+                    axis: Axis.horizontal,
+                    axisAlignment: -1.0,
                     child:
                         Text('Linkedin', style: TextStyle(color: Colors.white)))
               ],

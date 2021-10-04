@@ -6,7 +6,12 @@ ThemeData myTheme(BuildContext context) => ThemeData(
     backgroundColor: Colors.white,
     scaffoldBackgroundColor: Colors.white,
     textTheme: GoogleFonts.ibmPlexSansTextTheme(Theme.of(context).textTheme)
-        .copyWith(headline4: TextStyle(color: Colors.white)),
+        .copyWith(
+            headline4: TextStyle(color: Colors.white),
+            headline3: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+                fontSize: 35)),
     appBarTheme: AppBarTheme(color: Colors.white),
     elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
