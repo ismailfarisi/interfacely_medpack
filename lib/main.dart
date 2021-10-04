@@ -85,6 +85,9 @@ class Home extends StatelessWidget {
         padding: EdgeInsets.all(10),
         child: Column(
           children: [
+            SizedBox(
+              height: 40,
+            ),
             Text(
               "We mail your",
               style: Theme.of(context).textTheme.headline3,
@@ -94,11 +97,22 @@ class Home extends StatelessWidget {
               style: Theme.of(context).textTheme.headline3,
             ),
             SizedBox(
-              height: 20,
+              height: 30,
             ),
-            Image.asset("assets/art1.png"),
+            Image.asset(
+              "assets/art1.png",
+              width: width * .95,
+              fit: BoxFit.fitWidth,
+            ),
             SizedBox(
-              height: 50,
+              height: 30,
+            ),
+            Text(
+              "we are trusted by:",
+              style: Theme.of(context).textTheme.headline6,
+            ),
+            SizedBox(
+              height: 30,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
