@@ -99,10 +99,14 @@ class Home extends StatelessWidget {
             SizedBox(
               height: 30,
             ),
-            Image.asset(
-              "assets/art1.png",
+            Container(
               width: width * .92,
-              fit: BoxFit.fitWidth,
+              height: 240,
+              child: Image.asset(
+                "assets/art1.png",
+                width: width * .92,
+                fit: BoxFit.fitWidth,
+              ),
             ),
             SizedBox(
               height: 50,
